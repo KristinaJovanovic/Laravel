@@ -16,7 +16,8 @@ class ProducerFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->company
+            'name'=>$this->faker->company,
+           'adress'=>$this->faker->address
 
         ];
     }

@@ -24,7 +24,8 @@ class Product extends Model
         'price',
         'size',
         'producer_id',
-        'category_id'
+        'category_id',
+        
         
     ];
 }
