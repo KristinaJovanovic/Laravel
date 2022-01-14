@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
@@ -32,5 +33,15 @@ Route::get('/categories', [CategoryController::class, 'getCategories']);
 Route::delete('/deleteProducer/{id}',[ProducerController::class,'destroy']);
 Route::get('products', [ProductController::class, 'get']);//
 Route::get('/producers', [ProducerController::class, 'getProducers']);//
-Route::post('/addCategory',[CategoryController::class,'addCategory']);
+//Route::post('/addCategory',[CategoryController::class,'addCategory']);
+Route::post('/register',[AuthController::class,'register']);
+Route::post('/login',[AuthController::class,'login']);
 
+
+// Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+//     return view('dashboard');
+// })->name('dashboard');
+Route::group(['middleware'=>['auth:sanctum']],function(){
+
+    Route::post('/logout',[AuthController::class,'logout']);
+});
